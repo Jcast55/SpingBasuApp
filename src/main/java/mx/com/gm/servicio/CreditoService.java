@@ -2,7 +2,6 @@ package mx.com.gm.servicio;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 import mx.com.gm.domain.Credito;
 import mx.com.gm.domain.Persona;
@@ -21,5 +20,5 @@ public interface CreditoService {
 
     void deleteCredito(long id);
     
-    public Credito updateCoutas(Credito credito, int couta, Double total); 
+    public Credito updateCoutas(Credito credito, int couta, double total); 
 }

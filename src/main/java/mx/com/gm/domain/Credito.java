@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import lombok.Data;
 
@@ -12,9 +12,9 @@ import lombok.Data;
 @Entity
 @Table(name = "credito")
 public class Credito implements Serializable {
-    
+
     private static final long serialVersionUID = 1L;
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -29,12 +29,13 @@ public class Credito implements Serializable {
     @Column(name = "fecha_final")
     private Date fechaFinal;
 
-    @NotEmpty
+    @NotNull
     private int cuotas;
 
-    @NotEmpty
-    private Double totalF;
+    @NotNull
 
-    @NotEmpty
-    private Double totalI;
+    private double totalF;
+
+    @NotNull
+    private double totalI;
 }

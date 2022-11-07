@@ -44,8 +44,8 @@ class HolaSpringApplicationTests {
 		user12.setPassword(EncriptarPassword.encriptarPassword("1234"));
 		
 		usuarioDao.save(user);
-		usuarioDao.save(user12);
-
+		user12 = usuarioDao.save(user12);
+		/* -----Personas */
 		Persona user1 = new Persona();
 		user1.setNombre("Jose");
 		user1.setApellido("Apellido");
@@ -53,8 +53,20 @@ class HolaSpringApplicationTests {
 		user1.setTelefono("12489765");
 		user1.setSueldo(1000.00);
 		user1.setUser(user12);
-		personaDao.save(user1);
+		user1 = personaDao.save(user1);
 
+
+		Persona user2 = new Persona();
+		user2.setNombre("Daniel");
+		user2.setApellido("Apellido1");
+		user2.setEmail("jcast@gmail.com");
+		user2.setTelefono("12489765");
+		user2.setSueldo(1000.00);
+		user2.setUser(user12);
+		user2 = personaDao.save(user2);
+
+
+		/*  ------------------------------ */
 		Rol rolAdmin = new Rol();
 		Rol rolUser = new Rol();
 		rolUser.setNombre("ROLE_USER");
@@ -79,11 +91,33 @@ class HolaSpringApplicationTests {
 		Credito credito = new Credito();
 		credito.setPersona(user1);
 		credito.setCuotas(10);
-		Date date = new Date();
-		credito.setFechaFinal(new Date());
+		credito.setFechaInicio(new Date()); 	
+		credito.setFechaFinal(new Date(2023,1,20));
+		double canti = 1000.00;
+		credito.setTotalI(canti);
+		credito.setTotalF(canti);
+	
+		creditoService.saveCredito(credito);
+
+
+		
+		Credito credito1 = new Credito();
+		credito1.setPersona(user2);
+		credito1.setCuotas(10);
+		credito1.setFechaInicio(new Date()); 	
+		credito1.setFechaFinal(new Date(2023,1,20));
+		double canti1 = 1000.00;
+		credito1.setTotalI(canti1);
+		credito1.setTotalF(canti1);
+	
+		creditoService.saveCredito(credito1);
+
 
 
 		/* ------------- */
+
+
+		
 	}
 	@Test
 	public void probarUser(){
@@ -96,7 +130,17 @@ class HolaSpringApplicationTests {
 		}
 	}
 
+	@Test
+	public void updateCredito(){
+		Credito creditoV = creditoService.getCreditoById(1);
+		creditoService.updateCoutas(creditoV, 1, 100.00);
+		creditoV = creditoService.getCreditoById(1);
+		System.out.println("coutoas: " + creditoV.getCuotas()+ "\tTotal: " 
+		+ creditoV.getTotalF());
+
+	}
 	
+
 
 
 }

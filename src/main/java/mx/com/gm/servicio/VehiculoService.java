@@ -1,7 +1,6 @@
 package mx.com.gm.servicio;
 
 import java.util.List;
-import java.util.Optional;
 
 import mx.com.gm.domain.Persona;
 import mx.com.gm.domain.Vehiculo;
@@ -9,14 +8,14 @@ import mx.com.gm.domain.Vehiculo;
 public interface VehiculoService {
     Vehiculo saveVehiculo(Vehiculo vehiculo);
 
-    List<VehiculoService> getAllVehiculo();
+    List<Vehiculo> getAllVehiculo();
 
-    Vehiculo updVehiculo(VehiculoService vehiculo, long id);
+    Vehiculo updVehiculo(Vehiculo vehiculo, long id);
 
     void deleteVehiculo(long id);
-    
+
     Vehiculo getVehiculoById(long id);
-    
-    List<Optional<VehiculoService>> getAllVehiculosByPersona(Persona persona);
+
+    List<Vehiculo> getAllVehiculosByPersona(Persona persona);
 
 }

@@ -33,7 +33,7 @@ public class CreditoServiceImpl implements CreditoService {
     @Override
     public Credito getCreditoById(long id) {
         return creditoDao.findById(id).orElseThrow(() 
-        -> new ResourceNotFoundException("Trabajador", "id", id));
+        -> new ResourceNotFoundException("Credito", "id", id));
     }
 
     @Override
@@ -53,7 +53,7 @@ public class CreditoServiceImpl implements CreditoService {
     }
 
     @Override
-    public Credito updateCoutas(Credito credito, int couta, Double total) {
+    public Credito updateCoutas(Credito credito, int couta, double total) {
         credito.setCuotas(credito.getCuotas() - 1);
         credito.setTotalF(credito.getTotalF() - total);
         creditoDao.save(credito);

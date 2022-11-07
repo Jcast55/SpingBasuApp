@@ -1,7 +1,6 @@
 package mx.com.gm.servicio;
 
 import java.util.List;
-import java.util.Optional;
 
 import mx.com.gm.domain.Gasto;
 import mx.com.gm.domain.ReciboGasto;
@@ -12,10 +11,10 @@ public interface ReciboGastoService {
 
     public void update(ReciboGasto reciboGasto, long id);
 
-    public List<Optional<ReciboGasto>> getAllReciboGasto();
+    public List<ReciboGasto> getAllReciboGasto();
 
-    public List<Optional<ReciboGasto>> getAllByVehiculo(Vehiculo vehiculo);
+    public List<ReciboGasto> getAllByVehiculo(Vehiculo vehiculo);
 
-    public List<Optional<ReciboGasto>> getAllByGasto(Gasto gasto);
-    
+    public List<ReciboGasto> getAllByGasto(Gasto gasto);
+
 }

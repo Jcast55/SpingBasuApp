@@ -33,7 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/editar/**", "/agregar/**", "/eliminar")
                 .hasRole("ADMIN")
                 .antMatchers("/")
-                .hasAnyRole("USER", "ADMIN")
+                .hasAnyRole("USER", "ADMIN", "GUEST")
                 .and()
                 .formLogin()
                 .loginPage("/login")

@@ -1,6 +1,8 @@
 package mx.com.gm.servicio.impl;
 
 import java.util.List;
+
+import mx.com.gm.Exception.ResourceNotFoundException;
 import mx.com.gm.dao.PersonaDao;
 import mx.com.gm.domain.Persona;
 import mx.com.gm.servicio.PersonaService;
@@ -37,5 +39,12 @@ public class PersonaServiceImpl implements PersonaService {
     @Transactional(readOnly = true)
     public Persona encontrarPersona(Persona persona) {
         return personaDao.findById(persona.getIdPersona()).orElse(null);
+    }
+
+    @Override
+    public Persona findByIdPersona(long id) {
+       Persona persona =  personaDao.findById(id).orElseThrow(() 
+       -> new ResourceNotFoundException("Persona", "id", id));
+        return persona;
     }
 }

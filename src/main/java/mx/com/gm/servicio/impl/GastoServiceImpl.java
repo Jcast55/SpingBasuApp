@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import mx.com.gm.Exception.ResourceNotFoundException;
 import mx.com.gm.dao.GastoDao;
@@ -11,6 +12,7 @@ import mx.com.gm.domain.Gasto;
 import mx.com.gm.domain.Persona;
 import mx.com.gm.servicio.GastoService;
 
+@Service
 public class GastoServiceImpl implements GastoService {
 
     @Autowired

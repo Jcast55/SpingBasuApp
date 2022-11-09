@@ -7,7 +7,7 @@
         <meta charset="UTF-8"/>
     </head>
     <body>
-        <section th:fragment="agregarCliente">
+        <section th:fragment="agregarPersona">
             <div id="agregarCliente" class="modal fade">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
@@ -39,6 +39,20 @@
                                 <div class="form-group">
                                     <label for="saldo" th:text="#{persona.saldo}">Saldo</label>
                                     <input type="number" class="form-control" name="saldo" required="true" step="any">
+                                </div>
+                                <div class="form-group">
+                                    <label for="userName">Nombre de Usuario</label>
+                                    <input type="text" class="form-control" name="username" required="true"
+                                        th:field="${user.username}" step="any"/>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="pass">Contraseña</label>
+                                    <input type="password" class="form-control" name="password" required="true"
+                                        th:field="*{user.password}" step="any" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="rol"></label>
                                 </div>
                             </div>
                             <div class="modal-footer">

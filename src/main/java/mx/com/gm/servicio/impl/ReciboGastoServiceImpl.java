@@ -3,13 +3,14 @@ package mx.com.gm.servicio.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import mx.com.gm.dao.ReciboGastoDao;
 import mx.com.gm.domain.Gasto;
 import mx.com.gm.domain.ReciboGasto;
 import mx.com.gm.domain.Vehiculo;
 import mx.com.gm.servicio.ReciboGastoService;
-
+@Service
 public class ReciboGastoServiceImpl implements ReciboGastoService {
 
     @Autowired

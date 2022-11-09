@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <title>Editar Persona</title>
+    <meta charset="UTF-8" />
+</head>
+
+<body>
+    <section th:fragment="editarPersona">
+        <form th:action="@{editar/persona}" th:object="${persona}" method="POST" class="was-validated">
+            <input type="hidden" name="idPersona" th:field="*{idPersona}" />
+            <section th:replace="layout/botonesEditar :: botonesEditar"></section>
+            <div id="details">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4>Editar</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label for="nombre">[[#{persona.nombre}]]</label>
+                                        <input type="text" class="form-control" name="nombre" required="true"
+                                            th:field="*{nombre}" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="apellido">[[#{persona.apellido}]]</label>
+                                        <input type="text" class="form-control" name="apellido" required="true"
+                                            th:field="*{apellido}" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email">[[#{persona.email}]]</label>
+                                        <input type="email" class="form-control" name="email" required="true"
+                                            th:field="*{email}" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="telefono">[[#{persona.telefono}]]</label>
+                                        <input type="text" class="form-control" name="telefono" required="true"
+                                            th:field="*{telefono}" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="sueldo">Sueldo</label>
+                                        <input type="number" class="form-control" name="saldo" required="true"
+                                            th:field="*{sueldo}" step="any" />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="userName">Nombre de Usuario</label>
+                                        <input type="text" class="form-control" name="username" required="true"
+                                            th:field="*{user.username}" step="any" />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="pass">Contraseña</label>
+                                        <input type="password" class="form-control" name="password" required="true"
+                                            th:field="*{user.password}" step="any" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="rol">Rol</label>
+                                        <select>
+                                            <option th:each="rol: ${persona.user.roles}" th:text="${rol.nombre}"></option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </section>
+</body>
+
+</html>

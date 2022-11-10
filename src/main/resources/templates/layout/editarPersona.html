@@ -9,7 +9,7 @@
 
 <body>
     <section th:fragment="editarPersona">
-        <form th:action="@{editar/persona}" th:object="${persona}" method="POST" class="was-validated">
+        <form th:action="@{agregar/persona}" th:object="${personaDataForm}" method="POST" class="was-validated">
             <input type="hidden" name="idPersona" th:field="*{idPersona}" />
             <section th:replace="layout/botonesEditar :: botonesEditar"></section>
             <div id="details">

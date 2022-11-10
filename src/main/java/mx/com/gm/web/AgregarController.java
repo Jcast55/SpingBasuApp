@@ -6,12 +6,12 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -20,6 +20,7 @@ import mx.com.gm.domain.Persona;
 import mx.com.gm.domain.Rol;
 import mx.com.gm.servicio.PersonaService;
 import mx.com.gm.servicio.RolService;
+import mx.com.gm.util.PersonDataForm;
 
 @Slf4j
 @Controller
@@ -34,27 +35,18 @@ public class AgregarController {
     private UserDetailsService uService;
 
 
-    @GetMapping()
-    public String agregar(Persona persona, Model model) {
-        List<String> options = new ArrayList<String>();
-        options.add("ROLE_USER");
-        options.add("ROLE_GUEST");
-        model.addAttribute("options", options);
-        return "modificar";
+    @GetMapping
+    public String agregar(PersonDataForm PersonDataForm) {
+        return "agregarPerson";
     }
 
-    @PostMapping("/persona")
-    public String guardar(@Valid Persona persona, Errors errores, Model model) {
+    @PostMapping()
+    public String guardar(@ModelAttribute  PersonDataForm personaDataForm, Errors errores) {
         if (errores.hasErrors()) {
-            return "modificar";
+            return "agregarPerson";
         }
-        log.info("Persona:  " + persona.toString());
-        String pass = (String) model.getAttribute("pass");
-        String user = (String) model.getAttribute("userName");
-        Rol rol = (Rol) model.getAttribute("rol");
-        
-        log.info("pass: " +  pass + "    User: " +  user );
-        log.info("rol: " + rol.getNombre());
+       // log.info("Persona:  " + persona.toString());
+        log.info("Persona:  " + personaDataForm.toString());
        // personaService.guardar(persona);
         return "redirect:/";
     }

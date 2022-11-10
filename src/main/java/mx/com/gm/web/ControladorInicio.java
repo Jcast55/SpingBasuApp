@@ -51,7 +51,6 @@ public class ControladorInicio {
         model.addAttribute("options", options);
         return "modificar";
     }
-*/
     @PostMapping("/guardar")
     public String guardar(@Valid Persona persona, Errors errores) {
         if (errores.hasErrors()) {
@@ -60,7 +59,8 @@ public class ControladorInicio {
         personaService.guardar(persona);
         return "redirect:/";
     }
-
+    
+    */
     @GetMapping("/editar/{idPersona}")
     public String editar(Persona persona, Model model) {
         persona = personaService.encontrarPersona(persona);

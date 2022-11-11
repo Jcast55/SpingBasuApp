@@ -71,6 +71,48 @@ public class ControladorInicio {
     }
     
     */
+
+    @GetMapping("/vehiculo")
+    public String inicioVehiculo(@AuthenticationPrincipal User user){
+        return "vehiculo";
+    }
+
+    @GetMapping("/trabajador")
+    public String inicioTrabajador(@AuthenticationPrincipal User user) {
+        return "trabajador";
+    }
+
+    @GetMapping("/gasto")
+    public String inicioGasto(@AuthenticationPrincipal User user) {
+        return "gasto";
+    }
+
+    @GetMapping("/credito")
+    public String iniciocredito(@AuthenticationPrincipal User user) {
+        return "credito";
+    }
+
+    @GetMapping("/cobro")
+    public String inicioCobro(@AuthenticationPrincipal User user) {
+        return "cobro";
+    }
+
+    @GetMapping("/ruta")
+    public String inicioRuta(@AuthenticationPrincipal User user) {
+        return "ruta";
+    }
+
+    @GetMapping("/admin")
+    public String inicioAdmin(@AuthenticationPrincipal User user) {
+        return "admin";
+    }
+
+    @GetMapping("/reporte")
+    public String inicioReporte(@AuthenticationPrincipal User user) {
+        return "reporte";
+    }
+
+
     @GetMapping("/eliminar/{idPersona}")
     public String eliminar(@PathVariable("idPersona") long idPersona) {
         personaService.eliminar(personaService.findByIdPersona(idPersona));

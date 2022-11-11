@@ -29,57 +29,57 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
           </a>
         </li>
         <li>
-          <a href="#" onclick='loadHtml("template", "trabajadores.html")'>
+          <a th:href="@{/trabajador}">
             <i class='bx bx-box' ></i>
             <span class="links_name">Trabajadores</span>
           </a>
         </li>
         <li>
-          <a th:href="@{/cliente}"  onclick='loadHtml("template", "cliente.html")'>
+          <a th:href="@{/cliente}">
             <i class='bx bx-list-ul' ></i>
             <span class="links_name">Cliente</span>
           </a>
         </li>
         <li>
-          <a  onclick='loadHtml("template", "vehiculos.html")'>
+          <a th:href="@{/vehiculo}">
             <i class='bx bx-pie-chart-alt-2' ></i>
             <span class="links_name">Vehiculos</span>
           </a>
         </li>
         <li>
-          <a href="#">
+          <a th:href="@{/gasto}">
             <i class='bx bx-coin-stack' ></i>
-            <span class="links_name">Stock</span>
+            <span class="links_name">Gasto</span>
           </a>
         </li>
         <li>
-          <a href="#">
+          <a th:href="@{/credito}">
             <i class='bx bx-book-alt' ></i>
-            <span class="links_name">Total order</span>
+            <span class="links_name">Credito</span>
           </a>
         </li>
         <li>
-          <a href="#">
+          <a th:href="@{/cobro}">
             <i class='bx bx-user' ></i>
-            <span class="links_name">Team</span>
+            <span class="links_name">Cobro</span>
           </a>
         </li>
         <li>
-          <a href="#">
+          <a th:href="@{/ruta}">
             <i class='bx bx-message' ></i>
-            <span class="links_name">Messages</span>
+            <span class="links_name">Ruta</span>
           </a>
         </li>
         <li>
-          <a href="#">
+          <a th:href="@{/admin}">
             <i class='bx bx-heart' ></i>
-            <span class="links_name">Favrorites</span>
+            <span class="links_name">Administracion</span>
           </a>
         </li>
         <li>
-          <a href="#">
+          <a th:href="@{/reporte}">
             <i class='bx bx-cog' ></i>
-            <span class="links_name">Setting</span>
+            <span class="links_name">Reporte</span>
           </a>
         </li>
         <li class="log_out">

@@ -9,8 +9,8 @@
 
 <body>
     <section th:fragment="editarPersona">
-        <form th:action="@{agregar/persona}" th:object="${personaDataForm}" method="POST" class="was-validated">
-            <input type="hidden" name="idPersona" th:field="*{idPersona}" />
+        <form th:action="@{/editar}" th:object="${personaDataForm}" method="POST" class="was-validated">
+            <input type="hidden" name="id" th:field="*{id}" />
             <section th:replace="layout/botonesEditar :: botonesEditar"></section>
             <div id="details">
                 <div class="container">
@@ -50,18 +50,19 @@
                                     <div class="form-group">
                                         <label for="userName">Nombre de Usuario</label>
                                         <input type="text" class="form-control" name="username" required="true"
-                                            th:field="*{user.username}" step="any" />
+                                            th:field="*{username}" step="any" />
                                     </div>
 
                                     <div class="form-group">
                                         <label for="pass">Contraseña</label>
                                         <input type="password" class="form-control" name="password" required="true"
-                                            th:field="*{user.password}" step="any" />
+                                            th:field="*{password}" step="any" />
                                     </div>
                                     <div class="form-group">
                                         <label for="rol">Rol</label>
-                                        <select>
-                                            <option th:each="rol: ${persona.user.roles}" th:text="${rol.nombre}"></option>
+                                        <select name="nameRol" th:fiel="*{nameRol}">
+                                            <option value="ROLE_USER">ROLE_USER</option>
+                                            <option value="ROLE_GUEST">ROLE_GUEST</option>
                                         </select>
                                     </div>
                                 </div>

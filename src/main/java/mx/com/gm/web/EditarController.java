@@ -1,12 +1,6 @@
 package mx.com.gm.web;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -25,11 +19,9 @@ import mx.com.gm.servicio.Uservice;
 import mx.com.gm.util.EncriptarPassword;
 import mx.com.gm.util.PersonDataForm;
 
-@Slf4j
 @Controller
-@RequestMapping("/agregar")
-public class AgregarController {
-
+@RequestMapping("/editar")
+public class EditarController {
     @Autowired
     private PersonaService personaService;
     @Autowired
@@ -37,36 +29,49 @@ public class AgregarController {
     @Autowired
     private Uservice uService;
 
-    @GetMapping
-    public String agregar(PersonDataForm PersonDataForm) {
-        return "agregarPerson";
-    }
 
+    @GetMapping("/{idPersona}")
+    public String editar(Persona persona, Model model){
+        persona = personaService.encontrarPersona(persona);
+        PersonDataForm personDataForm = new PersonDataForm();
+        personDataForm.setId(persona.getIdPersona());
+        personDataForm.setApellido(persona.getApellido());
+        personDataForm.setEmail(persona.getEmail());
+        String nombreRol = persona.getUser().getRoles().get(0).getNombre();
+        personDataForm.setNameRol(nombreRol);
+        personDataForm.setNombre(persona.getNombre());
+        personDataForm.setSueldo(persona.getSueldo());
+        personDataForm.setTelefono(persona.getTelefono());
+        personDataForm.setUsername(persona.getUser().getUsername());
+        model.addAttribute("personaDataForm", personDataForm);
+        return "modificar";
+    }
     @PostMapping()
     public String guardar(@ModelAttribute PersonDataForm personaDataForm, Errors errores) {
-        if (errores.hasErrors()) {
-            return "agregarPerson";
+        if (errores.hasErrors() || personaDataForm.getId() == 0L) {
+            return "modificar";
         }
-        Usuario userC = new Usuario();
+        Persona persona = personaService.findByIdPersona(personaDataForm.getId());
+        Usuario userC = persona.getUser();
         String passwordEncrip = EncriptarPassword.encriptarPassword(personaDataForm.getPassword());
 
         userC.setPassword(passwordEncrip);
         userC.setUsername(personaDataForm.getUsername());
         userC = uService.userSave(userC);
-        Rol rol = new Rol();
+
+        Rol rol = persona.getUser().getRoles().get(0);
         rol.setNombre(personaDataForm.getNameRol());
         rol.setUsuario(userC);
-        Persona persona = new Persona();
+        rolService.rolSave(rol);
+
         persona.setApellido(personaDataForm.getApellido());
         persona.setEmail(personaDataForm.getEmail());
         persona.setNombre(personaDataForm.getNombre());
         persona.setSueldo(personaDataForm.getSueldo());
         persona.setTelefono(personaDataForm.getTelefono());
         persona.setUser(userC);
-        rolService.rolSave(rol);
         personaService.guardar(persona);
      
         return "redirect:/";
     }
-
 }

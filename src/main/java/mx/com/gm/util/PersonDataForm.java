@@ -3,12 +3,15 @@ package mx.com.gm.util;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
 
 import lombok.Data;
 
 @Data
 public class PersonDataForm {
 
+    
+    private long id;
     @NotEmpty
     private String nombre;
 

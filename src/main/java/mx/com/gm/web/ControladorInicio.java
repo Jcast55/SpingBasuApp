@@ -22,22 +22,17 @@ public class ControladorInicio {
     private PersonaService personaService;
 
     @GetMapping()
-    public String inicio(Model model, @AuthenticationPrincipal User user) {
-        var personas = personaService.listarPersonas();
-        log.info("ejecutando el controlador Spring MVC");
-        log.info("usuario que hizo login:" + user);
-        model.addAttribute("personas", personas);
-        var saldoTotal = 0D;
-        for (var p : personas) {
-            saldoTotal += p.getSueldo();
-        }
-        model.addAttribute("sueldoTotal", saldoTotal);
-        model.addAttribute("totalClientes", personas.size());
+    public String inicio(@AuthenticationPrincipal User user) {
+   
         return "index";
     }
 
 
-    
+    @GetMapping("/cliente")
+
+    public String inicioCliente(@AuthenticationPrincipal User user){
+        return "cliente";
+    }
 /* 
     @GetMapping("/agregar")
     public String agregar(Persona persona, Model model) {

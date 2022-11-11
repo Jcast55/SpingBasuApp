@@ -2,7 +2,7 @@
 <!-- Designined by CodingLab | www.youtube.com/codinglabyt -->
 <html lang="en" dir="ltr" xmlns:th="http://www.thymeleaf.org"
 xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-  <head >
+  <head th:fragment="headIndex">
     <meta charset="UTF-8">
     <title>Inicio</title>
     <link th:href="@{css/style.css}" rel="stylesheet" />
@@ -23,7 +23,7 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     </div>
       <ul class="nav-links">
         <li>
-          <a href="#" class="active">
+          <a th:href="@{/}" class="active">
             <i class='bx bx-grid-alt' ></i>
             <span class="links_name">Inicio</span>
           </a>
@@ -35,13 +35,13 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
           </a>
         </li>
         <li>
-          <a href="#" onclick='loadHtml("template", "cliente.html")'>
+          <a th:href="@{/cliente}"  onclick='loadHtml("template", "cliente.html")'>
             <i class='bx bx-list-ul' ></i>
             <span class="links_name">Cliente</span>
           </a>
         </li>
         <li>
-          <a href="#" onclick='loadHtml("template", "vehiculos.html")'>
+          <a  onclick='loadHtml("template", "vehiculos.html")'>
             <i class='bx bx-pie-chart-alt-2' ></i>
             <span class="links_name">Vehiculos</span>
           </a>

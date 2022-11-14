@@ -24,4 +24,6 @@ public class Usuario implements Serializable{
     
     @OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER)
     private List<Rol> roles;
+
+
 }

@@ -2,12 +2,17 @@ package mx.com.gm.web;
 
 
 import lombok.extern.slf4j.Slf4j;
+import mx.com.gm.domain.Persona;
 import mx.com.gm.servicio.PersonaService;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,8 +27,8 @@ public class ControladorInicio {
     private PersonaService personaService;
 
     @GetMapping()
-    public String inicio(@AuthenticationPrincipal User user) {
-   
+    public String inicio(@AuthenticationPrincipal User user, Model model) {
+        
         return "index";
     }
 
@@ -76,11 +81,17 @@ public class ControladorInicio {
     public String inicioVehiculo(@AuthenticationPrincipal User user){
         return "vehiculo";
     }
-
+/*   ------    trabajador -------- */
     @GetMapping("/trabajador")
-    public String inicioTrabajador(@AuthenticationPrincipal User user) {
+    public String inicioTrabajador(@AuthenticationPrincipal User user, Model model) {
+        List<Persona> personas = personaService.listarPersonas();
+        model.addAttribute("personas", personas);
         return "trabajador";
     }
+
+
+
+/*   ------    fin -------- */
 
     @GetMapping("/gasto")
     public String inicioGasto(@AuthenticationPrincipal User user) {

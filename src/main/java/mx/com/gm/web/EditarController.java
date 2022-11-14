@@ -19,6 +19,8 @@ import mx.com.gm.servicio.Uservice;
 import mx.com.gm.util.EncriptarPassword;
 import mx.com.gm.util.PersonDataForm;
 
+
+@Slf4j
 @Controller
 @RequestMapping("/editar")
 public class EditarController {
@@ -30,7 +32,7 @@ public class EditarController {
     private Uservice uService;
 
 
-    @GetMapping("/{idPersona}")
+    @GetMapping("persona/{idPersona}")
     public String editar(Persona persona, Model model){
         persona = personaService.encontrarPersona(persona);
         PersonDataForm personDataForm = new PersonDataForm();

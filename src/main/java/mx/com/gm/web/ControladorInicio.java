@@ -2,9 +2,12 @@ package mx.com.gm.web;
 
 
 import lombok.extern.slf4j.Slf4j;
+import mx.com.gm.domain.Credito;
 import mx.com.gm.domain.Persona;
+import mx.com.gm.servicio.CreditoService;
 import mx.com.gm.servicio.PersonaService;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +29,9 @@ public class ControladorInicio {
     @Autowired
     private PersonaService personaService;
 
+    @Autowired
+    private CreditoService creditoService;
+
     @GetMapping()
     public String inicio(@AuthenticationPrincipal User user, Model model) {
         
@@ -42,6 +48,13 @@ public class ControladorInicio {
     @GetMapping("/trabajador")
     public String inicioTrabajador(@AuthenticationPrincipal User user, Model model) {
         List<Persona> personas = personaService.listarPersonas();
+        List<Credito> creditos = creditoService.getAllCredito();
+        for (Credito credito : creditos) {
+            if(new Date().before(credito.getFechaFinal())){
+
+            }
+        }
+      
         model.addAttribute("personas", personas);
         return "trabajador";
     }

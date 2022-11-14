@@ -32,50 +32,7 @@ public class ControladorInicio {
         return "index";
     }
 
-
-    @GetMapping("/cliente")
-
-    public String inicioCliente(@AuthenticationPrincipal User user){
-        return "cliente";
-    }
-/* 
-    @GetMapping("/agregar")
-    public String agregar(Persona persona, Model model) {
-        List<String> options = new ArrayList<String>();
-        options.add("ROLE_USER");
-        options.add("ROLE_GUEST");
-        model.addAttribute("options", options);
-        return "modificar";
-    }
-    @PostMapping("/guardar")
-    public String guardar(@Valid Persona persona, Errors errores) {
-        if (errores.hasErrors()) {
-            return "modificar";
-        }
-        personaService.guardar(persona);
-        return "redirect:/";
-    }
     
-    @GetMapping("/editar/{idPersona}")
-    public String editar(Persona persona, Model model) {
-        persona = personaService.encontrarPersona(persona);
-        List<Rol> roles = persona.getUser().getRoles();
-        List<String> options = new ArrayList<String>();
-        if (roles.size() != 0 && !roles.isEmpty()) {
-
-            for (Rol rol : roles) {
-                options.add(rol.getNombre());
-            }
-        } else {
-            options.add("ROLE_USER");
-            options.add("ROLE_GUEST");
-        }
-        model.addAttribute("persona", persona);
-        model.addAttribute("options", options);
-        return "modificar";
-    }
-    
-    */
 
     @GetMapping("/vehiculo")
     public String inicioVehiculo(@AuthenticationPrincipal User user){
@@ -122,8 +79,8 @@ public class ControladorInicio {
     public String inicioReporte(@AuthenticationPrincipal User user) {
         return "reporte";
     }
-
-
+    
+    
     @GetMapping("/eliminar/{idPersona}")
     public String eliminar(@PathVariable("idPersona") long idPersona) {
         personaService.eliminar(personaService.findByIdPersona(idPersona));

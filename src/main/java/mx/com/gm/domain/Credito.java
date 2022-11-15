@@ -33,8 +33,7 @@ public class Credito implements Serializable {
     private int cuotas;
 
     @NotNull
-
-    private double totalF;
+    private Double totalF;
 
     @NotNull
     private double totalI;

@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -30,5 +32,9 @@ public class Cliente implements Serializable {
     private String direccion;
 
     private Double montoMensual;
+
+    @JoinColumn(name = "f_ruta")
+    @ManyToOne
+    private Ruta ruta;
 
 }

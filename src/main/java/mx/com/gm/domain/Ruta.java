@@ -1,11 +1,15 @@
 package mx.com.gm.domain;
 
+import java.util.List;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
@@ -33,4 +37,9 @@ public class Ruta {
     @JoinColumn(name = "f_R_Persona")
     @ManyToOne
     private ReportePersona rPersona;
+
+    @OneToMany(mappedBy = "ruta", fetch = FetchType.EAGER)
+    private List<Cliente> clientes;
+
 }
+
